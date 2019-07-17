@@ -7,12 +7,21 @@
 var argv = process.argv.slice(2);
 
 const shell = require("shelljs");
-if (argv[0] === "start") {
-  shell.exec(
-    "rimraf lib && babel ./src -d lib && node ./copy.js && start-storybook -p 9001 -c .storybook"
-  );
-} else if (argv[0] === "build") {
-  shell.exec(
-    'rimraf lib && babel -x ".js,.ts,.tsx" ./src -d lib && node ./copy.js'
-  );
+switch (argv[0]) {
+  case "start":
+    shell.exec(
+      "rimraf lib && babel ./src -d lib && node ./copy.js && start-storybook -p 9001 -c .storybook"
+    );
+    break;
+  case "build":
+    shell.exec(
+      'rimraf lib && babel -x ".js,.ts,.tsx" ./src -d lib && node ./copy.js'
+    );
+    break;
+  case "build-book":
+    shell.exec("rimraf .book && build-storybook -c .storybook -o .book ");
+    break;
+  default:
+    console.log("暂不支持此命令 T_T");
+    break;
 }
