@@ -19,12 +19,13 @@ function updateReadMe(version) {
   let newRead = defaultTxt.replace(/{ver}/g, version);
 
   fs.writeFile(
-    `${path.resolve(__dirname, "../..")}/README.md`,
+    `${path.resolve(__dirname, "../../../..")}/README.md`,
     newRead,
     function(err) {
       if (err) {
         console.error(err);
       }
+      console.log(`${path.resolve(__dirname, "../../../..")}/README.md`);
       console.log("生成newREADME");
     }
   );

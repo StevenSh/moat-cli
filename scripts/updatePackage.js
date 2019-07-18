@@ -23,7 +23,10 @@ var defaultPackage = {
 };
 
 function updatePackage(params) {
-  fs.readFile(`${path.resolve(__dirname, "../")}/package.json`, function(err, data) {
+  fs.readFile(`${path.resolve(__dirname, "../../..")}/package.json`, function(
+    err,
+    data
+  ) {
     if (err) {
       return console.error(err);
     }
@@ -36,9 +39,9 @@ function updatePackage(params) {
       version: argv.v
     };
     let newPackageStr = JSON.stringify(newPackage);
-    console.log(`${path.resolve(__dirname, "../..")}/package.json`);
+    console.log(`${path.resolve(__dirname, "../../../..")}/package.json`);
     fs.writeFile(
-      `${path.resolve(__dirname, "../..")}/package.json`,
+      `${path.resolve(__dirname, "../../../..")}/package.json`,
       newPackageStr,
       function(err) {
         if (err) {
