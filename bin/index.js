@@ -10,12 +10,12 @@ const shell = require("shelljs");
 switch (argv[0]) {
   case "start":
     shell.exec(
-      "rimraf lib && babel ./src -d lib && node ./copy.js && start-storybook -p 9001 -c .storybook"
+      "rimraf lib && babel ./src -d lib && node node_modules/moat-cli/scripts/copy.js && start-storybook -p 9001 -c .storybook"
     );
     break;
   case "build":
     shell.exec(
-      'rimraf lib && babel -x ".js,.ts,.tsx" ./src -d lib && node ./copy.js'
+      'rimraf lib && babel -x ".js,.ts,.tsx" ./src -d lib && node node_modules/moat-cli/scripts/copy.js'
     );
     break;
   case "build-book":
